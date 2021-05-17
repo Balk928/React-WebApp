@@ -1,39 +1,19 @@
 import React from 'react';
-
+import {Header,Card,CardBody} from 'reactstrap';
 class header extends React.Component
 {
-    state = {
-        todoText : ""
-    };
-    changeTodoText = event =>{
-        this.setState
-        (
-            {
-              todoText : event.target.value
-            }
-        );
-    };
-    submitHandler = event =>{
-        Event.preventDefault();
-        this.props.addTodoState(this.state.todoText);
-        this.setState(
-            {todoText:""}
-        );
-    };
-    render(){
+render()
+
 {
     return(
         <div>
-       <form onSubmit = {this.submitHandler}>
-         <input
-          type= 'text'
-           onChange = {this.submitHandler}
-           value = {this.state.todoText}/>
-           <button type = "submit">Add</button>
-           </form>
-       </div>
-    );
+            <Card className =  "my-2 bg-warning">
+                <CardBody>
+                    <h1 class = 'text-center my-1'>WelCome To Our Application</h1>
+                </CardBody>
+                </Card>
+            </div>
+    )
 }
-    }
 }
 export default header;
