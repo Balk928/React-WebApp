@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router,Route,NavLink,Prompt} from 'react-router-dom';
-import {Button, Form, FormGroup, Label, Input, FormText, Jumbotron, Container} from 'reactstrap';
-import React from 'react';
+import {Button, Form, FormGroup, Label, Input, FormText, Jumbotron, Container, CardBody,Card, CardText} from 'reactstrap';
+import React, { useState } from 'react';
 import Header from './Component/header';
 
 const Home = ()=>(
@@ -63,8 +63,27 @@ const Links = ()=>(
     <NavLink className="list-group-item" exact activeClassName="active" to="/about">About</NavLink>
     <NavLink className="list-group-item" exact activeClassName="active" to="/content">Content</NavLink>
     <NavLink className="list-group-item" exact activeClassName="active" to="/form">Form</NavLink>
+    <NavLink className="list-group-item" exact activeClassName="active" to="/course">Courses</NavLink>
     </div>
 )
+const Courses = ()=>{
+  
+  return(
+    <Card>
+     
+      <CardBody>
+            <CardText></CardText>
+            <Container className = "text-center">
+              <h1>All Course</h1>
+              <p>List of courses are as follow</p>
+              <Button color = "warning">Add Courses</Button>
+              <Button color = "success">Update Course</Button>
+              </Container>
+        </CardBody>
+      </Card>
+  );
+}
+
 const Content = ()=>(
   <div className = 'list-group'>
     <NavLink className = "list-group-item"  activeClassName = "active" to = "/content/city">City</NavLink>
@@ -122,6 +141,7 @@ const App = () => {
          <Route  path = "/about" component={About}/>
          <Route  path = "/content" component={Content}/>
          <Route  path = "/form" component= {form}/>
+         <Route  path = "/course" component= {Courses}/>
          </section>
          </div>
      </Router>
