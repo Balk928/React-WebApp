@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router,Route,NavLink,Prompt} from 'react-router-dom';
-import {Button, Form, FormGroup, Label, Input, FormText, Jumbotron, Container, CardBody,Card, CardText} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, FormText, Jumbotron, Container, CardBody,Card, CardText, CardSubtitle} from 'reactstrap';
 import React, { useState } from 'react';
 import Header from './Component/header';
 
@@ -63,26 +63,50 @@ const Links = ()=>(
     <NavLink className="list-group-item" exact activeClassName="active" to="/about">About</NavLink>
     <NavLink className="list-group-item" exact activeClassName="active" to="/content">Content</NavLink>
     <NavLink className="list-group-item" exact activeClassName="active" to="/form">Form</NavLink>
-    <NavLink className="list-group-item" exact activeClassName="active" to="/course">Courses</NavLink>
+    <NavLink className="list-group-item" exact activeClassName="active" to="/course">AllCourse</NavLink>
     </div>
 )
-const Courses = ()=>{
+const Courses = ({course})=>{
+ 
   
   return(
+    
     <Card>
      
       <CardBody>
-            <CardText></CardText>
+            <CardSubtitle class= "font-weight-bold" className="text-center">{course.title}</CardSubtitle>
+            <CardText className="text-center">{course.description}</CardText>
             <Container className = "text-center">
-              <h1>All Course</h1>
-              <p>List of courses are as follow</p>
-              <Button color = "warning">Add Courses</Button>
-              <Button color = "success">Update Course</Button>
+              
+            
+              <Button style={{margin:5}}  color = "warning">Add Courses</Button>
+              <Button  color = "success">Update Course</Button>
               </Container>
         </CardBody>
       </Card>
   );
 }
+const AllCourses = ()=>{
+
+  const [courses, setCourses] = useState([
+      {title:"JavaScript",description:"this is the course"},
+      {title:"Django Course",description:"this is the course"},
+      {title:"React - Native",description:"this is the course"}
+  ]);
+  return(
+      <div>
+          <h1>All Courses</h1>
+          <p> this is the paragraph to show that</p>
+          {
+              courses.length>0?
+              courses.map((item)=><Courses course={item}/>):
+              "No Course"
+          }
+          </div>
+
+  );
+}
+
 
 const Content = ()=>(
   <div className = 'list-group'>
@@ -141,10 +165,13 @@ const App = () => {
          <Route  path = "/about" component={About}/>
          <Route  path = "/content" component={Content}/>
          <Route  path = "/form" component= {form}/>
-         <Route  path = "/course" component= {Courses}/>
+         <Route  path = "/course" component={AllCourses}/>
+        
          </section>
          </div>
+        
      </Router>
+     
      </Container>
      );
      }
